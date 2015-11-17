@@ -1,0 +1,19 @@
+{
+  "name": "node-firebase-auth-example",
+  "version": "0.0.1",
+  "description": "NodeJS Firebase authentication example",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "bigdestroyer <hectorvallsmondragon@gmail.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bigdestroyer/node-firebase-auth-example.git"
+  },
+  "dependencies": {
+    "express": "^4.13.3",
+    "firebase": "^2.3.1"
+  }
+}
