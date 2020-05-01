@@ -1,40 +1,13 @@
-var Firebase = require('firebase');
+const firebase = require("firebase/app");
+require("firebase/auth");
 
-var firebaseRef = new Firebase('https://your-app-id.firebaseio.com/');
+const apiKey = process.env.FIREBASE_API_KEY;
+const fb = firebase.initializeApp({
+  apiKey: apiKey,
+});
 
-function addUser(email, password, callback) {
+exports.addUser = (email, password) =>
+  fb.auth().createUserWithEmailAndPassword(email, password);
 
-	firebaseRef.createUser({
-
-		email : email,
-		password : password
-	
-	}, function(error, userData) {
-		
-		callback(error, userData.uid);
-
-	});
-}
-
-
-function authenticate(email, password, callback) {
-
-	firebaseRef.authWithPassword({
-	
-		email : email, 
-		password : password
-	
-	}, function(error, authData) {
-	
-		callback(error, authData);
-
-	});
-
-}
-
-module.exports = {
-
-	addUser : addUser,
-	authenticate : authenticate
-
-}
+exports.authenticate = (email, password) =>
+  fb.auth().signInWithEmailAndPassword(email, password);
