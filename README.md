@@ -1,24 +1,37 @@
 # node-firebase-auth-example
 
-<h1>SETUP</h1>
+In this project, I show you how to create a user and authenticate it against your Firebase app, using her email and password.
 
-Change user_service.js line:
+# Run
 
-<code>var firebaseRef = new Firebase('https://your-app-id.firebaseio.com');</code>
+Export FIREBASE_API_KEY environment variable before run. It is used in `user_service.js` file to connect to your Firebase app.
 
-in order to use your Firebase app.
+## Yarn
 
-To run the server:
+```
+$ yarn install
+$ yarn start
+```
 
-<code>npm install</code><br>
-<code>npm start</code>
+## npm
 
-<h1>API</h1>
+```
+$ npm install
+$ npm start
+```
 
-<b>POST /user</b> Creates a new user
+# API
 
-Headers: user-email, user-pass
+## Create a user
+```
+POST /signup
+{ "email": "john.doe@mail.com", "password": "1234" }
+```
 
-<b>POST /login</b> Perform authentication
+## Login
+```
+POST /signin
+{ "email": "john.doe@mail.com", "password": "1234" }
+```
 
-Headers: user-email, user-pass
+Both endpoints return a Firebase UserCredential (https://firebase.google.com/docs/reference/js/firebase.auth#usercredential)
