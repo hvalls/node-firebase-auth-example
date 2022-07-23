@@ -1,13 +1,19 @@
 const firebase = require("firebase/app");
-require("firebase/auth");
+const { 
+  getAuth, 
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+ } = require("firebase/auth");
 
 const apiKey = process.env.FIREBASE_API_KEY;
-const fb = firebase.initializeApp({
+firebase.initializeApp({
   apiKey: apiKey,
 });
 
+const auth = getAuth();
+
 exports.addUser = (email, password) =>
-  fb.auth().createUserWithEmailAndPassword(email, password);
+  createUserWithEmailAndPassword(auth, email, password);
 
 exports.authenticate = (email, password) =>
-  fb.auth().signInWithEmailAndPassword(email, password);
+  signInWithEmailAndPassword(auth, email, password);
